@@ -1,6 +1,8 @@
 #ifndef LEETCODESANDBOX_TREENODE_H
 #define LEETCODESANDBOX_TREENODE_H
 
+#include <vector>
+
 struct TreeNode {
     int val;
     TreeNode *left;
