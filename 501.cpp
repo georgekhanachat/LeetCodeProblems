@@ -2,29 +2,14 @@
 #include <vector>
 #include <unordered_map>
 #include <algorithm>
+#include "Util/TreeNode.h"
 
 using namespace std;
 
 
-/**
- * Definition for a binary tree node.
- */
-
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-
 class Solution {
 public:
-    void helper(unordered_map<int, int> &freqMap, TreeNode *root) {
+    void helper(unordered_map<int,int>& freqMap, TreeNode* root) {
         if (!root)
             return;
         freqMap[root->val]++;
@@ -32,11 +17,11 @@ public:
         helper(freqMap, root->right);
     }
 
-    vector<int> findMode(TreeNode *root) {
-        unordered_map<int, int> freqMap;
+    vector<int> findMode(TreeNode* root) {
+        unordered_map<int,int> freqMap;
         helper(freqMap, root);
         auto pr = std::max_element(begin(freqMap), end(freqMap),
-                                   [](const auto &p1, const auto &p2) {
+                                   [] (const auto& p1, const auto& p2) {
                                        return p1.second < p2.second;
                                    }
         );
@@ -45,16 +30,20 @@ public:
         int max = pr->second;
         while (pr != freqMap.end()) {
             res.push_back(pr->first);
-            pr = find_if(next(pr), end(freqMap), [=](const auto &p) {
+            pr = find_if(next(pr), end(freqMap), [&](const auto& p) {
                 return p.second == max;
             });
         }
-
-
         return res;
     }
 };
 
 int main() {
+    Solution sol;
+    vector<string> a = {"1","null","2","2"};
+    vector<int> res = sol.findMode(createBinaryTree(a));
+    for (auto i: res)
+        cout << i << " ";
+    cout << endl;
     return 0;
 }
