@@ -8,73 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-    void test(int n) {
-        vector<vector<int>> grid(n, vector<int>(n, -3));
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n; ++j) {
-                for (int k = 0; k < n; ++k) {
-                    grid[i][k] += 1;
-                }
-                for (int k = 0; k < n; ++k) {
-                    grid[k][j] += 1;
-                }
-                int startI = i - min(j, i);
-                int startJ = j - min(j, i);
-                for (int k = startI, l = startJ; k < n && l < n; ++k, ++l) {
-                    grid[k][l] += 1;
-                }
-
-                if (i + j <= n - 1) {
-                    startI = 0;
-                    startJ = j + i;
-                } else {
-                    startI = i - (n - 1 - j);
-                    startJ = n - 1;
-                }
-                for (int k = startI, l = startJ; k < n && l > -1; ++k, --l) {
-                    grid[k][l] += 1;
-                }
-
-                print(grid);
-                cout << endl;
-            }
-        }
-    }
-
-    void incrementAttacks(vector<vector<int>> &grid, int i, int j, int n) {
-        grid[i][j] += 1;
-        for (int k = 0; k < n; ++k) {
-            if (j == k) continue;
-            grid[i][k] += 1;
-        }
-        for (int k = 0; k < n; ++k) {
-            if (i == k) continue;
-            grid[k][j] += 1;
-        }
-        int startI = i - min(j, i);
-        int startJ = j - min(j, i);
-        for (int k = startI, l = startJ; k < n && l < n; ++k, ++l) {
-            if (j == l && i == k) continue;
-            grid[k][l] += 1;
-        }
-
-        if (i + j <= n - 1) {
-            startI = 0;
-            startJ = j + i;
-        } else {
-            startI = i - (n - 1 - j);
-            startJ = n - 1;
-        }
-        for (int k = startI, l = startJ; k < n && l > -1; ++k, --l) {
-            if (j == l && i == k) continue;
-            grid[k][l] += 1;
-        }
-    }
-
-    void
-    helper(vector<vector<string>> &res, unordered_set<int> &cols, unordered_set<int> &posDiag,
-           unordered_set<int> &negDiag,
-           vector<string> &grid, int row, int n) {
+    void helper(vector<vector<string>> &res, unordered_set<int> &cols, unordered_set<int> &posDiag, unordered_set<int> &negDiag, vector<string> &grid, int row, int n) {
         if (row == n) {
             res.push_back(grid);
             return;
