@@ -1,14 +1,16 @@
 #include <iostream>
 #include <vector>
-#include "Util/Print.h"
+#include "LCUtils/LCPrint.h"
 #include <array>
 #include <unordered_set>
 
 using namespace std;
 
 class Solution {
+private:
+    unordered_set<int> cols, posDiag, negDiag;
 public:
-    void helper(vector<vector<string>> &res, unordered_set<int> &cols, unordered_set<int> &posDiag, unordered_set<int> &negDiag, vector<string> &grid, int row, int n) {
+    void helper(vector<vector<string>> &res, vector<string> &grid, int row, int n) {
         if (row == n) {
             res.push_back(grid);
             return;
@@ -24,7 +26,7 @@ public:
             negDiag.insert(row - col);
             grid[row][col] = 'Q';
 
-            helper(res, cols, posDiag, negDiag, grid, row + 1, n);
+            helper(res, grid, row + 1, n);
 
             cols.erase(col);
             posDiag.erase(row + col);
@@ -37,9 +39,8 @@ public:
     vector<vector<string>> solveNQueens(int n) {
         vector<vector<string>> res;
         vector<string> grid(n, string(n, '.'));
-        unordered_set<int> cols, posDiag, negDiag;
 
-        helper(res, cols, posDiag, negDiag, grid, 0, n);
+        helper(res, grid, 0, n);
 
         return res;
     }
@@ -47,7 +48,6 @@ public:
 
 int main() {
     Solution sol;
-    auto res = sol.solveNQueens(6);
-    print(res);
+    auto res = sol.solveNQueens(5);
     return 0;
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "Util/TreeNode.h"
+#include "LCUtils/LCTreeNode.h"
 #include <map>
 
 using namespace std;

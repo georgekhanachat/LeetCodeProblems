@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include "Util/TreeNode.h"
+#include "LCUtils/LCTreeNode.h"
 
 using namespace std;
 
@@ -24,7 +21,7 @@ public:
 
 int main() {
     Solution sol;
-    vector<string> tree = {"3", "9", "20", "null", "null", "15", "7"};
-    cout << sol.sumOfLeftLeaves(createBinaryTree(tree));
+    TreeNode tree({"3", "9", "20", "null", "null", "15", "7"});
+    cout << sol.sumOfLeftLeaves(&tree);
     return 0;
 }

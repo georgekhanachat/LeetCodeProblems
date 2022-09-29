@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "Util/Print.h"
+#include "LCUtils/LCPrint.h"
 #include <array>
 #include <unordered_set>
 

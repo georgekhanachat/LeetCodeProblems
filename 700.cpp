@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Util/TreeNode.h"
+#include "LCUtils/LCTreeNode.h"
 
 using namespace std;
 

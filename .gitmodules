@@ -1,0 +1,3 @@
+[submodule "LCUtils"]
+	path = LCUtils
+	url = https://github.com/LeetCodeUtils/LCUtils.git
