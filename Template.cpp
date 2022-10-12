@@ -1,4 +1,5 @@
-#include <iostream>
+#include "LCUtils/LCIncludes.h"
+#include "LCUtils/LCUtils.h"
 
 using namespace std;
 
@@ -9,13 +10,15 @@ using namespace std;
  * Time Complexity: O(1)
  * Space Complexity: O(1)
  */
-#if RUN_SOLUTION==0
+#if RUN_SOLUTION == 0
+
 class Solution {
 public:
     int function() {
         return 0;
     }
 };
+
 #endif
 
 /**
@@ -23,7 +26,7 @@ public:
  * Time Complexity: O(1)
  * Space Complexity: O(1)
  */
-#if RUN_SOLUTION==1
+#if RUN_SOLUTION == 1
 class Solution {
 public:
     int function() {
@@ -35,7 +38,9 @@ public:
 int main() {
     Solution sol;
 
-    std::cout << sol.function() << std::endl;
-
+//    std::cout << sol.function() << std::endl;
+    vector<int> s = {1,2,3};
+    vector<vector<int>> f = {{1,2,3},{1,2,3},{1,2,3}};
+    LC::printContainer(f);
     return 0;
 }
